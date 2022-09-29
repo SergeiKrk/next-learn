@@ -1,11 +1,15 @@
 import Link from "next/link";
 
-const BlogItem = (title, description, slug) => {
+const BlogItem = ({ title, description, id }) => {
   return (
-    <div>
-      <h3 dangerouslySetInnerHTML={{ __html: title.contentHtml }} />
-      <p dangerouslySetInnerHTML={{ __html: description.contentHtml }} />
-      <Link href="/articles/[slug]" as={`/articles/${slug}`}>
+    <div key={id}>
+      <h3>{title}</h3>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: description,
+        }}
+      />
+      <Link href="/articles/[id]" as={`/articles/${id}`}>
         <a>Читать</a>
       </Link>
     </div>
